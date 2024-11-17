@@ -3,14 +3,16 @@
 import { useState } from "react";
 import Column from "./column";
 import { InitialState } from "@/interfaces/interface";
+import { statusTodo } from "@/interfaces/CardProps";
 
 export default function Home() {
   const initialState: InitialState = {
-    todo: [{ id: 0, task: "keep improving", status: "TO-DO" }],
-    inProgress: [{ id: 0, task: "keep improving", status: "IN-PROGRESS" }],
-    done: [{ id: 0, task: "keep improving", status: "DONE" }],
+    todo: [{ id: 0, task: "keep improving", status: statusTodo.Todo }],
+    inProgress: [
+      { id: 0, task: "keep improving", status: statusTodo.InProgess },
+    ],
+    done: [{ id: 0, task: "keep improving", status: statusTodo.Done }],
   };
-
   const [tasks, setTasks] = useState(initialState);
   return (
     <div className="flex size-full   ">
