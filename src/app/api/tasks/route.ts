@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client/extension";
-
+import { PrismaClient } from "@prisma/client";
+import { statusTodo } from "@/interfaces/tasks";
 const prisma = new PrismaClient();
 
 // obtener todas las tareas
@@ -22,7 +22,7 @@ export async function POST(req: Request) {
     );
   }
   const newTask = await prisma.task.create({
-    data: { task, status: "TO-DO" },
+    data: { task, status: "TO_DO" },
   });
 
   return NextResponse.json(newTask, { status: 201 });
