@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Column from "./column";
-import { InitialState } from "@/interfaces/interface";
-import { statusTodo } from "@/interfaces/CardProps";
+import { InitialState } from "@/interfaces/tasks";
+import { statusTodo } from "@/interfaces/tasks";
 
 export default function Home() {
   const initialState: InitialState = {

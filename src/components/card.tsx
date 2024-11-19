@@ -1,6 +1,6 @@
 import { CardPropsComponent } from "@/interfaces/CardProps";
 import { useEffect, useState } from "react";
-import { statusTodo } from "@/interfaces/CardProps";
+import { statusTodo } from "@/interfaces/tasks";
 
 export default function Card({ task, status }: CardPropsComponent) {
   const [bgColor, setBgColor] = useState<string>();
