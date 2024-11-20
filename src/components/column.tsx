@@ -1,12 +1,17 @@
 import { ColumnProps } from "@/interfaces/DashboardProps";
 import Card from "./card";
-import Button from "./CreateTaskButton";
 import { statusTodo } from "@/interfaces/tasks";
 import { useState } from "react";
 import Modal from "./CreateTaskModal";
 
-export default function Column({ title, bg = "white", tasks }: ColumnProps) {
+export default function Column({
+  title,
+  bg = "white",
+  tasks,
+  setTasks,
+}: ColumnProps) {
   const [showModal, setShowModal] = useState(false);
+  const tasksTodo = tasks.some((task) => task.status === statusTodo.Todo);
   return (
     <div className={`flex-1 ${bg} h-screen shadow-lg rounded-lg `}>
       <h2 className="text-lg font-semibold text-gray-800 text-center">
@@ -20,18 +25,16 @@ export default function Column({ title, bg = "white", tasks }: ColumnProps) {
           : ""}
       </div>
       <div>
-        {tasks.map((task) => {
-          return task.status === statusTodo.Todo ? (
-            <button
-              className="shadow-lg rounded-lg bg-black p-1 ml-4 text-white"
-              onClick={() => setShowModal(!showModal)}
-            >
-              + add task
-            </button>
-          ) : null;
-        })}
+        {tasksTodo && (
+          <button
+            className="shadow-lg rounded-lg bg-black p-1 ml-4 text-white"
+            onClick={() => setShowModal(!showModal)}
+          >
+            + add task
+          </button>
+        )}
       </div>
-      {showModal && <Modal />}
+      {showModal && <Modal setTasks />}
     </div>
   );
 }

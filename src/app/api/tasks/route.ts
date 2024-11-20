@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
-import { statusTodo } from "@/interfaces/tasks";
 const prisma = new PrismaClient();
 
 // obtener todas las tareas
