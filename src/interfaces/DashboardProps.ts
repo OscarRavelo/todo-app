@@ -4,5 +4,5 @@ export interface ColumnProps {
   title: string;
   bg?: string;
   tasks: Task[];
-  setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
+  addTask: (newTask: string) => void;
 }

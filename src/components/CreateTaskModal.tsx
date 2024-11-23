@@ -1,39 +1,16 @@
-import { useEffect, useState } from "react";
-
-export default function Modal({ setTasks }) {
-  const [taskcreated, setTaskCreated] = useState(false);
+export default function Modal({
+  addTask,
+  setShowModal,
+}: {
+  addTask: () => void;
+  setShowModal: (bool: boolean) => void;
+}) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(event.target[0].value);
-    try {
-      const res = await fetch("/api/tasks", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({ task: event.target[0].value }),
-      });
-      if (!res.ok) throw new Error("Failed to create the task");
-      const data = await res.json();
-      setTaskCreated(true);
-      console.log("task created", { data, taskcreated });
-    } catch (error) {
-      console.error(error);
-    }
+    addTask(event.target[0].value);
+    setShowModal(false);
   };
-
-  useEffect(() => {
-    const fetchTasks = async () => {
-      const data = await fetch("./api/tasks/");
-      const result = await data.json();
-      setTasks(result);
-    };
-
-    console.log("taskcreated in useeffect:", taskcreated);
-    if (taskcreated) {
-      fetchTasks();
-    }
-  }, [taskcreated, setTasks]);
 
   return (
     <div>
