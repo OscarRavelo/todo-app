@@ -37,11 +37,33 @@ const useTasks = () => {
     }
   };
 
+  const UpdateTask = async (taskId, status: string) => {
+    try {
+      if (!taskId || typeof status !== "string") {
+        throw new error("invalid taskId or Status");
+      }
+      const response = await fetch(`/api/tasks/${taskId}`, {
+        method: "PATCH",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ status }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "failed to update task");
+      }
+
+      console.log("Task updated successfully");
+    } catch (error) {
+      console.error("failed to send the update data:", error);
+    }
+  };
+
   useEffect(() => {
     fetchTasks();
   }, []);
 
-  return { tasks, fetchTasks, addTask, deleteTask };
+  return { tasks, fetchTasks, addTask, deleteTask, UpdateTask };
 };
 
 export default useTasks;

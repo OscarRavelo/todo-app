@@ -24,3 +24,34 @@ export async function DELETE(
     console.error("error trying to delete the task: ", error);
   }
 }
+
+export async function UpdateStatus(
+  req: NextRequest,
+  context: { params: { id: string } },
+) {
+  const { id } = await context.params;
+  try {
+    const taskId = parseInt(id, 10);
+    if (isNaN(taskId)) {
+      return NextResponse.json({ error: "invalid task ID" }, { status: 400 });
+    }
+    const body = await req.json();
+    const { status } = body;
+    const updatedTask = await prisma.task.update({
+      where: { id: taskId },
+      data: { status: status },
+    });
+
+    return NextResponse.json(updatedTask);
+  } catch (error) {
+    console.error("error updating task:", error);
+    return NextResponse.json(
+      {
+        error: "Failed to updated task",
+      },
+      {
+        status: 500,
+      },
+    );
+  }
+}
