@@ -29,7 +29,7 @@ export default function Card({
       <div className={`${bgColor} shadow-lg p-3 m-3 rounded-lg`}>
         <div className="size-full text-center text-lg">{task}</div>
         <div className="flex space-x-20">
-          <UpdateStatus options={["TO_DO", "IN_PROGRESS", "DONE"]} />
+          <UpdateStatus selectedStatus={status} />
           <button
             onClick={() => deleteTask(id)}
             className="bg-red-200 shadow-lg rounded-lg p-1 mt-3"

@@ -12,6 +12,6 @@ export interface InitialState {
 
 export enum statusTodo {
   Todo = "TO_DO",
-  InProgess = "IN PROGRESS",
+  InProgess = "IN_PROGRESS",
   Done = "DONE",
 }
