@@ -1,6 +1,7 @@
 import { CardPropsComponent } from "@/interfaces/CardProps";
 import { useEffect, useState } from "react";
 import { statusTodo } from "@/interfaces/tasks";
+import UpdateStatus from "@/components/UpdateStatus";
 
 export default function Card({
   task,
@@ -26,14 +27,16 @@ export default function Card({
   return (
     <>
       <div className={`${bgColor} shadow-lg p-3 m-3 rounded-lg`}>
-        <div>{task}</div>
-        <div>{status}</div>
-        <button
-          onClick={() => deleteTask(id)}
-          className="bg-red-200 shadow-lg rounded-lg p-1 mt-3"
-        >
-          delete task
-        </button>
+        <div className="size-full text-center text-lg">{task}</div>
+        <div className="flex space-x-20">
+          <UpdateStatus options={["TO_DO", "IN_PROGRESS", "DONE"]} />
+          <button
+            onClick={() => deleteTask(id)}
+            className="bg-red-200 shadow-lg rounded-lg p-1 mt-3"
+          >
+            delete task
+          </button>
+        </div>
       </div>
     </>
   );

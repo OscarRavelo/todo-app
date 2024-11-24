@@ -23,13 +23,22 @@ export default function Home() {
         tasks={tasks}
         addTask={addTask}
         deleteTask={deleteTask}
+        key={1}
       />
       <Column
         title="IN Progress"
         bg="bg-yellow-100"
         tasks={initialState.inProgress}
+        deleteTask={deleteTask}
+        key={2}
       />
-      <Column title="DONE" bg="bg-green-100" tasks={initialState.done} />
+      <Column
+        title="DONE"
+        bg="bg-green-100"
+        tasks={initialState.done}
+        deleteTask={deleteTask}
+        key={3}
+      />
     </div>
   );
 }
