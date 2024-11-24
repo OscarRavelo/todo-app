@@ -2,7 +2,7 @@ export default function Modal({
   addTask,
   setShowModal,
 }: {
-  addTask: () => void;
+  addTask: (event) => void;
   setShowModal: (bool: boolean) => void;
 }) {
   const handleSubmit = async (event) => {

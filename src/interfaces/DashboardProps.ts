@@ -5,4 +5,5 @@ export interface ColumnProps {
   bg?: string;
   tasks: Task[];
   addTask: (newTask: string) => void;
+  deleteTask: (id: number) => void;
 }

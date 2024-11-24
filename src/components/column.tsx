@@ -9,6 +9,7 @@ export default function Column({
   bg = "white",
   tasks,
   addTask,
+  deleteTask,
 }: ColumnProps) {
   const [showModal, setShowModal] = useState(false);
   const tasksTodo = tasks.some((task) => task.status === statusTodo.Todo);
@@ -20,14 +21,20 @@ export default function Column({
       <div>
         {tasks.length
           ? tasks.map((task) => (
-              <Card key={task.id} status={task.status} task={task.task} />
+              <Card
+                key={task.id}
+                status={task.status}
+                task={task.task}
+                id={task.id}
+                deleteTask={deleteTask}
+              />
             ))
           : ""}
       </div>
       <div>
         {tasksTodo && (
           <button
-            className="shadow-lg rounded-lg bg-black p-1 ml-4 text-white"
+            className="shadow-lg rounded-lg bg-green-200 p-1 ml-4  text-center"
             onClick={() => setShowModal(!showModal)}
           >
             + add task

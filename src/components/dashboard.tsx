@@ -15,13 +15,15 @@ export default function Home() {
     ],
     done: [{ id: 0, task: "keep improving", status: statusTodo.Done }],
   };
-  console.log("todo", tasks);
   return (
     <div className="flex size-full   ">
-      <button onClick={() => deleteTask(tasks.length)}>
-        delete todo tasks
-      </button>
-      <Column title="TO DO" bg="bg-sky-100" tasks={tasks} addTask={addTask} />
+      <Column
+        title="TO DO"
+        bg="bg-sky-100"
+        tasks={tasks}
+        addTask={addTask}
+        deleteTask={deleteTask}
+      />
       <Column
         title="IN Progress"
         bg="bg-yellow-100"
