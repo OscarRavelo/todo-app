@@ -1,11 +1,15 @@
 import { UpdateStatusProps } from "@/interfaces/UpdateStatusProps";
 import { useState } from "react";
-export default function UpdateStatus({ selectedStatus }: UpdateStatusProps) {
+export default function UpdateStatus({
+  selectedStatus,
+  taskId,
+  updateTask,
+}: UpdateStatusProps) {
   const [currentStatus, setCurrentStatus] = useState(selectedStatus);
 
   const handleOnChange = (event) => {
     setCurrentStatus(event.target.value);
-    console.log("status selected:", event.target.value);
+    updateTask(taskId, event.target.value);
   };
   return (
     <>

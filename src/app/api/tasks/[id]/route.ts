@@ -25,13 +25,13 @@ export async function DELETE(
   }
 }
 
-export async function UpdateStatus(
+export async function PATCH(
   req: NextRequest,
-  context: { params: { id: string } },
+  context: { params: { id: number } },
 ) {
   const { id } = await context.params;
   try {
-    const taskId = parseInt(id, 10);
+    const taskId = Number(id);
     if (isNaN(taskId)) {
       return NextResponse.json({ error: "invalid task ID" }, { status: 400 });
     }

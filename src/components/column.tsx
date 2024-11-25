@@ -10,6 +10,7 @@ export default function Column({
   tasks,
   addTask,
   deleteTask,
+  updateTask,
 }: ColumnProps) {
   const [showModal, setShowModal] = useState(false);
   const tasksTodo = tasks.some((task) => task.status === statusTodo.Todo);
@@ -27,6 +28,7 @@ export default function Column({
                 task={task.task}
                 id={task.id}
                 deleteTask={deleteTask}
+                updateTask={updateTask}
               />
             ))
           : ""}
@@ -41,7 +43,7 @@ export default function Column({
           </button>
         )}
       </div>
-      {showModal && <Modal addTask={addTask} />}
+      {showModal && <Modal addTask={addTask} setShowModal={setShowModal} />}
     </div>
   );
 }

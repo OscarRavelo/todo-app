@@ -4,4 +4,5 @@ export interface CardPropsComponent {
   status: statusTodo;
   id: number;
   deleteTask: (id: number) => void;
+  updateTask: (taskId: number, status: statusTodo) => void;
 }

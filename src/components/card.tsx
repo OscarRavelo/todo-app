@@ -8,6 +8,7 @@ export default function Card({
   status,
   id,
   deleteTask,
+  updateTask,
 }: CardPropsComponent) {
   const [bgColor, setBgColor] = useState<string>();
   useEffect(() => {
@@ -29,7 +30,11 @@ export default function Card({
       <div className={`${bgColor} shadow-lg p-3 m-3 rounded-lg`}>
         <div className="size-full text-center text-lg">{task}</div>
         <div className="flex space-x-20">
-          <UpdateStatus selectedStatus={status} />
+          <UpdateStatus
+            selectedStatus={status}
+            updateTask={updateTask}
+            taskId={id}
+          />
           <button
             onClick={() => deleteTask(id)}
             className="bg-red-200 shadow-lg rounded-lg p-1 mt-3"
