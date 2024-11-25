@@ -15,7 +15,11 @@ export default function Home() {
       <Column
         title="TO DO"
         bg="bg-sky-100"
-        tasks={tasks.filter((task) => task.status === statusTodo.Todo)}
+        tasks={
+          tasks.length
+            ? tasks.filter((task) => task.status === statusTodo.Todo)
+            : [{ status: statusTodo.Todo, task: "create your first task" }]
+        }
         addTask={addTask}
         deleteTask={deleteTask}
         updateTask={updateTask}
